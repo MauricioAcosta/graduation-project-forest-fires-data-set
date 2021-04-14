@@ -25,5 +25,5 @@ jupyter-lab # Open file jupiter_red_neuronal
 Run in bash
 
 ```bash
-jupyter-lab # Open file jupiter_red_neuronal
+./red_reuronal.py
 ```
