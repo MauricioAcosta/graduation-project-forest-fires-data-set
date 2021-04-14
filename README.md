@@ -16,7 +16,7 @@ Install dependences
 python3 -m pip install -r requirements.txt
 ```
 
-Run neuronal network in jupiter
+Run neural network in jupiter
 
 ```bash
 jupyter-lab # Open file jupiter_red_neuronal
