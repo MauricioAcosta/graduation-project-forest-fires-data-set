@@ -1,9 +1,5 @@
-pandas
-matplotlib
-sklearn
-jupyterlab
 Django
-djangorestframework
+django-rest-framework
 Pillow
 psycopg2
 pytz
@@ -12,5 +8,4 @@ django-cors-headers
 numpy
 pandas
 joblib
-sklearn
-
+scikit_learn==0.22.2.post1
