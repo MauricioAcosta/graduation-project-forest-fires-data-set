@@ -83,12 +83,12 @@ def create_model(numCapas, neuronasCapa1, neuronasCapa2, neuronasCapa3, neuronas
 
     params = mlp.get_params()
     print('Params:', params)
-    # print('len coef:', len(mlp.coefs_))
-    # print('len coef[0]:', len(mlp.coefs_[0]))
-    # print('coefs:', mlp.coefs_)
-    # print('len intercepts:', len(mlp.intercepts_))
-    # print('len intercepts[0]:', len(mlp.intercepts_[0]))
-    # print('intercepts:', len(mlp.intercepts_))
+    print('len coef:', len(mlp.coefs_))
+    print('len coef[0]:', len(mlp.coefs_[0]))
+    print('coefs:', mlp.coefs_)
+    print('len intercepts:', len(mlp.intercepts_))
+    print('len intercepts[0]:', len(mlp.intercepts_[0]))
+    print('intercepts:', len(mlp.intercepts_))
 
     data = {
         'mse': mse,
