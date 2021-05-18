@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { coordinateInterface } from '../models/coordinate.interface';
 import { dataForEstimate } from '../models/dataForEstimate.interface';
+import { estimateArea } from '../models/estimateArea.interface';
 import { formInterface } from '../models/form.interface';
 import { ServiceService } from '../services/service.service';
 
@@ -14,11 +15,10 @@ export class PageComponent implements OnInit {
   form: formInterface;
   coordinate: coordinateInterface;
   point: any;
-  dataForm: formInterface;
   modalRef: NgbModalRef;
   dataSend: dataForEstimate;
   activateSend: boolean;
-  affectedArea: Object;
+  affectedArea: estimateArea;
   constructor(private modalService: NgbModal, private service: ServiceService) {
     this.form = {
       month: 0,
@@ -61,20 +61,19 @@ export class PageComponent implements OnInit {
     this.coordinate = $event;
     if (this.coordinate) {
       this.openModal(modal);
-      this.dataForm = this.modalRef.componentInstance.form;
     }
   }
   send() {
     this.dataSend = {
       latitud: this.coordinate.lat,
       longitud: this.coordinate.lng,
-      ...this.dataForm,
+      ...this.form,
     };
     this.service
       .postEstimateAreaForestFire(this.dataSend)
-      .subscribe((response) => {
+      .subscribe((response: estimateArea) => {
         this.affectedArea = response;
-        console.log(this.affectedArea);
+        this.modalService.dismissAll();
       });
   }
 }
