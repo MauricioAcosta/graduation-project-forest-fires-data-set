@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { coordinateInterface } from '../models/coordinate.interface';
+import { dataForEstimate } from '../models/dataForEstimate.interface';
+import { formInterface } from '../models/form.interface';
+import { ServiceService } from '../services/service.service';
 
 @Component({
   selector: 'app-page',
@@ -7,9 +11,28 @@ import { coordinateInterface } from '../models/coordinate.interface';
   styleUrls: ['./page.component.sass'],
 })
 export class PageComponent implements OnInit {
+  form: formInterface;
   coordinate: coordinateInterface;
   point: any;
-  constructor() {
+  dataForm: formInterface;
+  modalRef: NgbModalRef;
+  dataSend: dataForEstimate;
+  activateSend: boolean;
+  affectedArea: Object;
+  constructor(private modalService: NgbModal, private service: ServiceService) {
+    this.form = {
+      month: 0,
+      day: 0,
+      FFMC: 18.7,
+      DMC: 1.1,
+      DC: 7.9,
+      ISI: 0,
+      temp: 2.2,
+      RH: 15.0,
+      wind: 0.4,
+      rain: 0,
+    };
+    this.activateSend = false;
     this.coordinate = {
       lat: 0,
       lng: 0,
@@ -17,7 +40,41 @@ export class PageComponent implements OnInit {
   }
 
   ngOnInit(): void {}
-  getCoordinate($event: coordinateInterface) {
+  change() {
+    if (this.form.month !== 0 && this.form.day !== 0) {
+      this.activateSend = true;
+    }
+  }
+  openModal(modal: any) {
+    this.modalRef = this.modalService.open(modal, {
+      backdropClass: 'light-blue-backdrop',
+      centered: true,
+      scrollable: true,
+      windowClass: 'dark-modal',
+      modalDialogClass: 'dark-modal',
+      size: 'xl',
+      backdrop: 'static',
+      keyboard: false,
+    });
+  }
+  getCoordinate($event: coordinateInterface, modal: any) {
     this.coordinate = $event;
+    if (this.coordinate) {
+      this.openModal(modal);
+      this.dataForm = this.modalRef.componentInstance.form;
+    }
+  }
+  send() {
+    this.dataSend = {
+      latitud: this.coordinate.lat,
+      longitud: this.coordinate.lng,
+      ...this.dataForm,
+    };
+    this.service
+      .postEstimateAreaForestFire(this.dataSend)
+      .subscribe((response) => {
+        this.affectedArea = response;
+        console.log(this.affectedArea);
+      });
   }
 }

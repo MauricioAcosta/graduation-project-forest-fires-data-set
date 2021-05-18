@@ -23,10 +23,6 @@ export class MapComponent implements OnInit {
       var layer = L.geoJson(this.park).addTo(this.map);
       layer.on('click', (event: any) => {
         this.coordinate = event.latlng;
-        if (this.coordinate) {
-          var geometry = L.Point(this.coordinate);
-          L.geoJson(geometry).addTo(this.map);
-        }
       });
     });
     this.map = L.map('mapId').setView([41.9058275, -6.9624076], 11);
