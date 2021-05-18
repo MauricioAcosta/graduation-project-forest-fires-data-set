@@ -1,0 +1,177 @@
+<ng-template #modal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Ingrese los datos</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <h5 class="alert alert-info text-center">
+      Por favor ingresa los siguientes datos
+    </h5>
+    <div class="row">
+      <div class="col-12 col-sm-6 mb-1">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <label class="input-group-text" aria-required="true">* Mes</label>
+          </div>
+          <select
+            (change)="change()"
+            class="custom-select"
+            name="month"
+            id="month"
+            [(ngModel)]="selectDepartment"
+          >
+            <option value="0" disabled selected>Seleccione el mes</option>
+            <option value="1">Enero</option>
+            <option value="2">Febrero</option>
+            <option value="3">Marzo</option>
+            <option value="4">Abril</option>
+            <option value="5">Mayo</option>
+            <option value="6">Junio</option>
+            <option value="7">Julio</option>
+            <option value="8">Agosto</option>
+            <option value="9">Septiembre</option>
+            <option value="10">Octubre</option>
+            <option value="11">Noviembre</option>
+            <option value="12">Diciembre</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 mb-1">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <label class="input-group-text" aria-required="true">* Día</label>
+          </div>
+          <select
+            (change)="change()"
+            class="custom-select"
+            name="day"
+            id="day"
+            [(ngModel)]="selectDepartment"
+          >
+            <option value="0" disabled selected>Seleccione el día</option>
+            <option value="1">Lunes</option>
+            <option value="2">Martes</option>
+            <option value="3">Miercoles</option>
+            <option value="4">Jueves</option>
+            <option value="5">Viernes</option>
+            <option value="6">Sabado</option>
+            <option value="7">Domingo</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 mb-2">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <label class="input-group-text"
+              >* FFMC (Humedad de Combustibles Finos)</label
+            >
+          </div>
+          <input
+            id="ffmc"
+            type="number"
+            min="18.7"
+            max="96.20"
+            class="validate"
+          />
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 mb-2">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <label class="input-group-text"
+              >* DMC (Humedad en la Hojarasca)</label
+            >
+          </div>
+          <input
+            id="dmc"
+            type="number"
+            min="1.1"
+            max="291.3"
+            class="validate"
+          />
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 mb-2">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <label class="input-group-text">* DC (Código de Sequía)</label>
+          </div>
+          <input id="dc" type="number" min="7.9" max="860.6" class="validate" />
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 mb-2">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <label class="input-group-text"
+              >ISI (velocidad de propagación)</label
+            >
+          </div>
+          <input id="isi" type="number" min="0" max="56.1" class="validate" />
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 mb-2">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <label class="input-group-text">Temperatura °C</label>
+          </div>
+          <input
+            id="temp"
+            type="number"
+            min="2.2"
+            max="33.30"
+            class="validate"
+          />
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 mb-2">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <label class="input-group-text">Humedad Relativa %</label>
+          </div>
+          <input id="rh" type="number" min="15.0" max="100" class="validate" />
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 mb-2">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <label class="input-group-text">Viento km/h</label>
+          </div>
+          <input
+            id="wind"
+            type="number"
+            min="0.40"
+            max="9.40"
+            class="validate"
+          />
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 mb-2">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <label class="input-group-text">Lluvia mm/m2</label>
+          </div>
+          <input id="rain" type="number" min="0" max="6.4" class="validate" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="col-6 text-right">
+      <button
+        type="button"
+        ngbAutofocus
+        class="btn btn-success btn-block"
+        (click)="closeModal(true)"
+      >
+        Enviar
+      </button>
+    </div>
+  </div>
+</ng-template>
