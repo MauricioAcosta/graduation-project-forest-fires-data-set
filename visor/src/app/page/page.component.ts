@@ -37,6 +37,10 @@ export class PageComponent implements OnInit {
       lat: 0,
       lng: 0,
     };
+    this.affectedArea = {
+      area: 0,
+      radio: 0,
+    };
   }
 
   ngOnInit(): void {}
@@ -53,8 +57,6 @@ export class PageComponent implements OnInit {
       windowClass: 'dark-modal',
       modalDialogClass: 'dark-modal',
       size: 'xl',
-      backdrop: 'static',
-      keyboard: false,
     });
   }
   getCoordinate($event: coordinateInterface, modal: any) {

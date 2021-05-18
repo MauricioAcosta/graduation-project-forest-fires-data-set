@@ -29,7 +29,7 @@ def response_cors(response):
     return response
 
 @csrf_exempt
-def datos_compuesto_list(request):
+def data_regression_list(request):
     """
     """
     if request.method == 'GET':

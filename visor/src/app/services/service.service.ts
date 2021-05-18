@@ -20,7 +20,7 @@ export class ServiceService {
   public postEstimateAreaForestFire(data: dataForEstimate) {
     console.log('postEstimateAreaForestFire: ', data);
     return this.httpClient.post(
-      'http://localhost:8000/datos_compuestos/',
+      'http://localhost:8000/area_affected_by_forest_fires/',
       data
     );
   }

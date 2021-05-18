@@ -13,6 +13,7 @@ export class MapComponent implements OnInit {
   map: any;
   park: any;
   @Input() point: any;
+  @Input() radius: number;
   @Output() eventAction = new EventEmitter();
   coordinate: coordinateInterface;
   constructor(private service: ServiceService) {}
@@ -36,5 +37,13 @@ export class MapComponent implements OnInit {
   }
   _eventAction(): void {
     this.eventAction.emit(this.coordinate);
+    if (this.coordinate) {
+      if (this.radius !== 0) {
+        L.circle(
+          [this.coordinate.lat, this.coordinate.lng],
+          this.radius / 1000
+        ).addTo(this.map);
+      }
+    }
   }
 }
