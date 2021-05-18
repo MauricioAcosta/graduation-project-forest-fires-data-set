@@ -1,4 +1,12 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { coordinateInterface } from '../../models/coordinate.interface';
 import { ServiceService } from '../../services/service.service';
 
@@ -9,14 +17,30 @@ declare const L: any;
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.sass'],
 })
-export class MapComponent implements OnInit {
+export class MapComponent implements OnInit, OnChanges {
   map: any;
   park: any;
-  @Input() point: any;
   @Input() radius: number;
   @Output() eventAction = new EventEmitter();
   coordinate: coordinateInterface;
+  sizeFire: string;
   constructor(private service: ServiceService) {}
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.radius && changes.radius.currentValue !== 0) {
+      console.log(changes);
+      var radius = changes.radius.currentValue / 1000;
+      var iconUrl = '/assets/fire.gif';
+      var icon = L.icon({
+        iconUrl: iconUrl,
+        iconSize: [radius, radius],
+        iconAnchor: [radius / 2, radius / 2],
+      });
+      L.marker([this.coordinate.lat, this.coordinate.lng], {
+        icon: icon,
+      }).addTo(this.map);
+    }
+  }
 
   ngOnInit(): void {
     this.service.getFileParkGeoJson().subscribe((response) => {
@@ -37,13 +61,5 @@ export class MapComponent implements OnInit {
   }
   _eventAction(): void {
     this.eventAction.emit(this.coordinate);
-    if (this.coordinate) {
-      if (this.radius !== 0) {
-        L.circle(
-          [this.coordinate.lat, this.coordinate.lng],
-          this.radius / 1000
-        ).addTo(this.map);
-      }
-    }
   }
 }

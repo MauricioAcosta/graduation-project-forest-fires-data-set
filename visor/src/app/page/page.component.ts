@@ -14,7 +14,6 @@ import { ServiceService } from '../services/service.service';
 export class PageComponent implements OnInit {
   form: formInterface;
   coordinate: coordinateInterface;
-  point: any;
   modalRef: NgbModalRef;
   dataSend: dataForEstimate;
   activateSend: boolean;
@@ -66,11 +65,13 @@ export class PageComponent implements OnInit {
     }
   }
   send() {
+    this.form.DC;
     this.dataSend = {
       latitud: this.coordinate.lat,
       longitud: this.coordinate.lng,
       ...this.form,
     };
+    console.log(this.form);
     this.service
       .postEstimateAreaForestFire(this.dataSend)
       .subscribe((response: estimateArea) => {

@@ -82,122 +82,84 @@
           </div>
         </div>
         <div class="col-12 col-md-6 mb-1">
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <label class="input-group-text"
-                >* DMC (Humedad en la Hojarasca)</label
-              >
-            </div>
-            <input
-              id="dmc"
-              type="number"
-              min="1.1"
-              max="291.3"
-              [(ngModel)]="form.DMC"
-            />
-          </div>
+          <app-input
+            [title]="'* DMC (Humedad en la Hojarasca)'"
+            [id]="'dmc'"
+            [type]="'number'"
+            [min]="'1.1'"
+            [max]="'291.3'"
+            [(inputModel)]="form.DMC"
+          ></app-input>
         </div>
         <div class="col-12 col-md-6 mb-1">
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <label class="input-group-text">* DC (Código de Sequía)</label>
-            </div>
-            <input
-              id="dc"
-              type="number"
-              min="7.9"
-              max="860.6"
-              [(ngModel)]="form.DC"
-            />
-          </div>
+          <app-input
+            [title]="'* DC (Código de Sequía)'"
+            [id]="'dc'"
+            [type]="'number'"
+            [min]="'7.9'"
+            [max]="'860.6'"
+            [(inputModel)]="form.DC"
+          ></app-input>
         </div>
         <div class="col-12 col-md-6 mb-1">
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <label class="input-group-text"
-                >* ISI (velocidad de propagación)</label
-              >
-            </div>
-            <input
-              id="isi"
-              type="number"
-              min="0"
-              max="56.1"
-              [(ngModel)]="form.ISI"
-            />
-          </div>
+          <app-input
+            [title]="'* ISI (velocidad de propagación)'"
+            [id]="'isi'"
+            [type]="'number'"
+            [min]="'0'"
+            [max]="'56.1'"
+            [(inputModel)]="form.ISI"
+          ></app-input>
         </div>
         <div class="col-12 col-md-6 mb-1">
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <label class="input-group-text">* Temperatura °C</label>
-            </div>
-            <input
-              id="temp"
-              type="number"
-              min="2.2"
-              max="33.30"
-              [(ngModel)]="form.temp"
-            />
-          </div>
+          <app-input
+            [title]="'* Temperatura °C'"
+            [id]="'temp'"
+            [type]="'number'"
+            [min]="'2.2'"
+            [max]="'33.30'"
+            [(inputModel)]="form.temp"
+          ></app-input>
         </div>
         <div class="col-12 col-md-6 mb-1">
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <label class="input-group-text">* Humedad Relativa %</label>
-            </div>
-            <input
-              id="rh"
-              type="number"
-              min="15.0"
-              max="100"
-              [(ngModel)]="form.RH"
-            />
-          </div>
+          <app-input
+            [title]="'* Humedad Relativa %'"
+            [id]="'rh'"
+            [type]="'number'"
+            [min]="'15.0'"
+            [max]="'100'"
+            [(inputModel)]="form.RH"
+          ></app-input>
         </div>
         <div class="col-12 col-md-6">
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <label class="input-group-text">* Viento km/h</label>
-            </div>
-            <input
-              id="wind"
-              type="number"
-              min="0.40"
-              max="9.40"
-              [(ngModel)]="form.wind"
-            />
-          </div>
+          <app-input
+            [title]="'* Viento km/h'"
+            [id]="'wind'"
+            [type]="'number'"
+            [min]="'0.40'"
+            [max]="'9.40'"
+            [(inputModel)]="form.wind"
+          ></app-input>
         </div>
         <div class="col-12 col-md-6 mb-1">
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <label class="input-group-text">* Lluvia mm/m2</label>
-            </div>
-            <input
-              id="rain"
-              type="number"
-              min="0"
-              max="6.4"
-              [(ngModel)]="form.rain"
-            />
-          </div>
+          <app-input
+            [title]="'* Lluvia mm/m2'"
+            [id]="'rain'"
+            [type]="'number'"
+            [min]="'0'"
+            [max]="'6.4'"
+            [(inputModel)]="form.rain"
+          ></app-input>
         </div>
         <div class="col-12">
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <label class="input-group-text"
-                >* FFMC (Humedad de Combustibles Finos)</label
-              >
-            </div>
-            <input
-              id="ffmc"
-              type="number"
-              min="18.7"
-              max="96.20"
-              [(ngModel)]="form.FFMC"
-            />
-          </div>
+          <app-input
+            [title]="'* FFMC (Humedad de Combustibles Finos)'"
+            [id]="'ffmc'"
+            [type]="'number'"
+            [min]="'18.7'"
+            [max]="'96.20'"
+            [(inputModel)]="form.FFMC"
+          ></app-input>
         </div>
       </div>
     </div>
