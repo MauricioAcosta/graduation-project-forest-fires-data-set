@@ -8,9 +8,10 @@ import { PageComponent } from './page/page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbActiveModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
+import { InputComponent } from './components/input/input.component';
 
 @NgModule({
-  declarations: [AppComponent, MapComponent, PageComponent],
+  declarations: [AppComponent, MapComponent, PageComponent, InputComponent],
   imports: [
     BrowserModule,
     HttpClientModule,

@@ -1,195 +1,180 @@
-<app-map (eventAction)="getCoordinate($event, modal)"></app-map>
-<ng-template #modal let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title">Ingresa los siguientes datos</h4>
+<div>
+  <div class="logo">
+    <h2>
+      APLICACIÓN DE REGRESIÓN DEL ÁREA DE AFECTACIÓN DE INCENDIOS FORESTALES CON
+      SOFTWARE LIBRE, CASO DE ESTUDIO DEL PARQUE MONTESINHO
+    </h2>
+    <h3>Andres Mauricio Acosta Pulido</h3>
+    <h3>Proyecto de grado para optar por el título de Ingeniero de Sistemas</h3>
+    <h2>Director</h2>
+    <h3>Ingeniero Alejandro Paolo Daza Corredor</h3>
+    <img src="/assets/udistrital.png" alt="" />
+    <br />
+    <h4>
+      FACULTAD DE INGENIERÍA <br />
+      PROYECTO CURRICULAR INGENIERÍA DE SISTEMAS BOGOTA D.C <br />
+      2021
+    </h4>
+    <br />
   </div>
-  <div class="modal-body">
-    <h5 class="alert alert-info text-center">
-      Por favor ingresa los siguientes datos
-    </h5>
-    <div class="row">
-      <div class="col-12 col-md-6 mb-1">
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <label class="input-group-text" aria-required="true">* Mes</label>
-          </div>
-          <select
-            (change)="change()"
-            class="custom-select"
-            name="month"
-            id="month"
-            [(ngModel)]="form.month"
-          >
-            <option value="0" disabled selected>Seleccione el mes</option>
-            <option value="1">Enero</option>
-            <option value="2">Febrero</option>
-            <option value="3">Marzo</option>
-            <option value="4">Abril</option>
-            <option value="5">Mayo</option>
-            <option value="6">Junio</option>
-            <option value="7">Julio</option>
-            <option value="8">Agosto</option>
-            <option value="9">Septiembre</option>
-            <option value="10">Octubre</option>
-            <option value="11">Noviembre</option>
-            <option value="12">Diciembre</option>
-          </select>
-        </div>
-      </div>
-      <div class="col-12 col-md-6 mb-1">
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <label class="input-group-text" aria-required="true">* Día</label>
-          </div>
-          <select
-            (change)="change()"
-            class="custom-select"
-            name="day"
-            id="day"
-            [(ngModel)]="form.day"
-          >
-            <option value="0" disabled selected>Seleccione el día</option>
-            <option value="1">Lunes</option>
-            <option value="2">Martes</option>
-            <option value="3">Miercoles</option>
-            <option value="4">Jueves</option>
-            <option value="5">Viernes</option>
-            <option value="6">Sabado</option>
-            <option value="7">Domingo</option>
-          </select>
-        </div>
-      </div>
-      <div class="col-12 col-md-6 mb-1">
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <label class="input-group-text"
-              >* DMC (Humedad en la Hojarasca)</label
+  <app-map
+    (eventAction)="getCoordinate($event, modal)"
+    [affectedArea]="affectedArea"
+  ></app-map>
+  <ng-template #modal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">Ingresa los siguientes datos</h4>
+    </div>
+    <div class="modal-body">
+      <h5 class="alert alert-info text-center">
+        Por favor ingresa los siguientes datos
+      </h5>
+      <div class="row">
+        <div class="col-12 col-md-6 mb-1">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <label class="input-group-text" aria-required="true">* Mes</label>
+            </div>
+            <select
+              (change)="change()"
+              class="custom-select"
+              name="month"
+              id="month"
+              [(ngModel)]="form.month"
             >
+              <option value="0" disabled selected>Seleccione el mes</option>
+              <option value="1">Enero</option>
+              <option value="2">Febrero</option>
+              <option value="3">Marzo</option>
+              <option value="4">Abril</option>
+              <option value="5">Mayo</option>
+              <option value="6">Junio</option>
+              <option value="7">Julio</option>
+              <option value="8">Agosto</option>
+              <option value="9">Septiembre</option>
+              <option value="10">Octubre</option>
+              <option value="11">Noviembre</option>
+              <option value="12">Diciembre</option>
+            </select>
           </div>
-          <input
-            id="dmc"
-            type="number"
-            min="1.1"
-            max="291.3"
-            [(ngModel)]="form.DMC"
-          />
         </div>
-      </div>
-      <div class="col-12 col-md-6 mb-1">
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <label class="input-group-text">* DC (Código de Sequía)</label>
-          </div>
-          <input
-            id="dc"
-            type="number"
-            min="7.9"
-            max="860.6"
-            [(ngModel)]="form.DC"
-          />
-        </div>
-      </div>
-      <div class="col-12 col-md-6 mb-1">
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <label class="input-group-text"
-              >* ISI (velocidad de propagación)</label
+        <div class="col-12 col-md-6 mb-1">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <label class="input-group-text" aria-required="true">* Día</label>
+            </div>
+            <select
+              (change)="change()"
+              class="custom-select"
+              name="day"
+              id="day"
+              [(ngModel)]="form.day"
             >
+              <option value="0" disabled selected>Seleccione el día</option>
+              <option value="1">Lunes</option>
+              <option value="2">Martes</option>
+              <option value="3">Miercoles</option>
+              <option value="4">Jueves</option>
+              <option value="5">Viernes</option>
+              <option value="6">Sabado</option>
+              <option value="7">Domingo</option>
+            </select>
           </div>
-          <input
-            id="isi"
-            type="number"
-            min="0"
-            max="56.1"
-            [(ngModel)]="form.ISI"
-          />
         </div>
-      </div>
-      <div class="col-12 col-md-6 mb-1">
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <label class="input-group-text">* Temperatura °C</label>
-          </div>
-          <input
-            id="temp"
-            type="number"
-            min="2.2"
-            max="33.30"
-            [(ngModel)]="form.temp"
-          />
+        <div class="col-12 col-md-6 mb-1">
+          <app-input
+            [title]="'* DMC (Humedad en la Hojarasca)'"
+            [id]="'dmc'"
+            [type]="'number'"
+            [min]="'1.1'"
+            [max]="'291.3'"
+            [(inputModel)]="form.DMC"
+          ></app-input>
         </div>
-      </div>
-      <div class="col-12 col-md-6 mb-1">
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <label class="input-group-text">* Humedad Relativa %</label>
-          </div>
-          <input
-            id="rh"
-            type="number"
-            min="15.0"
-            max="100"
-            [(ngModel)]="form.RH"
-          />
+        <div class="col-12 col-md-6 mb-1">
+          <app-input
+            [title]="'* DC (Código de Sequía)'"
+            [id]="'dc'"
+            [type]="'number'"
+            [min]="'7.9'"
+            [max]="'860.6'"
+            [(inputModel)]="form.DC"
+          ></app-input>
         </div>
-      </div>
-      <div class="col-12 col-md-6">
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <label class="input-group-text">* Viento km/h</label>
-          </div>
-          <input
-            id="wind"
-            type="number"
-            min="0.40"
-            max="9.40"
-            [(ngModel)]="form.wind"
-          />
+        <div class="col-12 col-md-6 mb-1">
+          <app-input
+            [title]="'* ISI (velocidad de propagación)'"
+            [id]="'isi'"
+            [type]="'number'"
+            [min]="'0'"
+            [max]="'56.1'"
+            [(inputModel)]="form.ISI"
+          ></app-input>
         </div>
-      </div>
-      <div class="col-12 col-md-6 mb-1">
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <label class="input-group-text">* Lluvia mm/m2</label>
-          </div>
-          <input
-            id="rain"
-            type="number"
-            min="0"
-            max="6.4"
-            [(ngModel)]="form.rain"
-          />
+        <div class="col-12 col-md-6 mb-1">
+          <app-input
+            [title]="'* Temperatura °C'"
+            [id]="'temp'"
+            [type]="'number'"
+            [min]="'2.2'"
+            [max]="'33.30'"
+            [(inputModel)]="form.temp"
+          ></app-input>
         </div>
-      </div>
-      <div class="col-12">
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <label class="input-group-text"
-              >* FFMC (Humedad de Combustibles Finos)</label
-            >
-          </div>
-          <input
-            id="ffmc"
-            type="number"
-            min="18.7"
-            max="96.20"
-            [(ngModel)]="form.FFMC"
-          />
+        <div class="col-12 col-md-6 mb-1">
+          <app-input
+            [title]="'* Humedad Relativa %'"
+            [id]="'rh'"
+            [type]="'number'"
+            [min]="'15.0'"
+            [max]="'100'"
+            [(inputModel)]="form.RH"
+          ></app-input>
+        </div>
+        <div class="col-12 col-md-6">
+          <app-input
+            [title]="'* Viento km/h'"
+            [id]="'wind'"
+            [type]="'number'"
+            [min]="'0.40'"
+            [max]="'9.40'"
+            [(inputModel)]="form.wind"
+          ></app-input>
+        </div>
+        <div class="col-12 col-md-6 mb-1">
+          <app-input
+            [title]="'* Lluvia mm/m2'"
+            [id]="'rain'"
+            [type]="'number'"
+            [min]="'0'"
+            [max]="'6.4'"
+            [(inputModel)]="form.rain"
+          ></app-input>
+        </div>
+        <div class="col-12">
+          <app-input
+            [title]="'* FFMC (Humedad de Combustibles Finos)'"
+            [id]="'ffmc'"
+            [type]="'number'"
+            [min]="'18.7'"
+            [max]="'96.20'"
+            [(inputModel)]="form.FFMC"
+          ></app-input>
         </div>
       </div>
     </div>
-  </div>
-  <div class="modal-footer">
-    <div class="col-6 text-right">
-      <button
-        type="button"
-        ngbAutofocus
-        class="btn btn-success btn-block"
-        (click)="send()"
-        [disabled]="!activateSend"
-      >
-        Enviar
-      </button>
+    <div class="modal-footer">
+      <div class="col-6 text-right">
+        <button
+          type="button"
+          ngbAutofocus
+          class="btn btn-success btn-block"
+          (click)="send()"
+          [disabled]="!activateSend"
+        >
+          Enviar
+        </button>
+      </div>
     </div>
-  </div>
-</ng-template>
+  </ng-template>
+</div>

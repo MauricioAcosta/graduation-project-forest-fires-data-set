@@ -1,4 +1,13 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
+import { estimateArea } from 'src/app/models/estimateArea.interface';
 import { coordinateInterface } from '../../models/coordinate.interface';
 import { ServiceService } from '../../services/service.service';
 
@@ -9,13 +18,41 @@ declare const L: any;
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.sass'],
 })
-export class MapComponent implements OnInit {
+export class MapComponent implements OnInit, OnChanges {
   map: any;
   park: any;
-  @Input() point: any;
+  @Input() affectedArea: estimateArea;
   @Output() eventAction = new EventEmitter();
   coordinate: coordinateInterface;
+  sizeFire: string;
   constructor(private service: ServiceService) {}
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.affectedArea && changes.affectedArea.currentValue !== 0) {
+      const area = changes.affectedArea.currentValue.area / 10000;
+      const radius = changes.affectedArea.currentValue.radio / 1000;
+      var iconUrl = '/assets/fire.gif';
+      var icon = L.icon({
+        iconUrl: iconUrl,
+        iconSize: [radius, radius],
+        iconAnchor: [radius / 2, radius / 2],
+      });
+      L.marker([this.coordinate.lat, this.coordinate.lng], {
+        icon: icon,
+      })
+        .addTo(this.map)
+        .bindTooltip('Área (km): ' + area + '\n Radio (km): ' + radius, {
+          permanent: true,
+          direction: 'right',
+        });
+      L.circle([this.coordinate.lat, this.coordinate.lng], radius, {
+        color: 'red',
+        fillColor: '#e6701c',
+        fillOpacity: 0.5,
+      }).addTo(this.map);
+      this.zoom2latLng(this.coordinate);
+    }
+  }
 
   ngOnInit(): void {
     this.service.getFileParkGeoJson().subscribe((response) => {
@@ -33,6 +70,9 @@ export class MapComponent implements OnInit {
       attribution:
         '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap contributors</a>',
     }).addTo(this.map);
+  }
+  zoom2latLng(latlng: coordinateInterface) {
+    this.map.flyTo(latlng, 12); // you can specify pan/zoom options as well
   }
   _eventAction(): void {
     this.eventAction.emit(this.coordinate);
