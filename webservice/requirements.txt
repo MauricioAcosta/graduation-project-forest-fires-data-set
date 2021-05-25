@@ -1,0 +1,11 @@
+Django
+django-rest-framework
+Pillow
+psycopg2
+pytz
+sqlparse
+django-cors-headers
+numpy
+pandas
+joblib
+scikit_learn==0.22.2.post1

@@ -1,0 +1,16 @@
+pandas
+matplotlib
+sklearn
+jupyterlab
+Django
+djangorestframework
+Pillow
+psycopg2
+pytz
+sqlparse
+django-cors-headers
+numpy
+pandas
+joblib
+sklearn
+
