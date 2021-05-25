@@ -29,13 +29,8 @@ export class MapComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.affectedArea && changes.affectedArea.currentValue !== 0) {
-      console.log(changes);
-      const area = parseInt(
-        (changes.affectedArea.currentValue.area / 1000).toFixed(2)
-      );
-      const radius = parseInt(
-        (changes.affectedArea.currentValue.radio / 1000).toFixed(2)
-      );
+      const area = changes.affectedArea.currentValue.area / 10000;
+      const radius = changes.affectedArea.currentValue.radio / 1000;
       var iconUrl = '/assets/fire.gif';
       var icon = L.icon({
         iconUrl: iconUrl,

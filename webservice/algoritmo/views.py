@@ -53,8 +53,6 @@ def data_regression_list(request):
         print(datos)
         area_ha = neural_network(datos)
         area_m2 = 10000 * area_ha
-        # serializer_medida.pop('senal_transmision')
-        # serializer_medida.pop('senal_reflexion')
         response = {
             'area': area_m2,
             'radio': pow(area_m2/math.pi, 1/2)
