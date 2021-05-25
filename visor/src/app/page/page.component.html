@@ -19,7 +19,7 @@
   </div>
   <app-map
     (eventAction)="getCoordinate($event, modal)"
-    [radius]="affectedArea.radio"
+    [affectedArea]="affectedArea"
   ></app-map>
   <ng-template #modal let-modal>
     <div class="modal-header">
