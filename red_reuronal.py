@@ -44,8 +44,8 @@ X = df[[
        'day_thu', 'day_tue', 'day_wed']].to_numpy()
 y = df['area']
 
-#cor=df.corr()
-#print(df.corr())
+cor=df.corr()
+print('cor: ',df.corr())
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, shuffle=True) # test_size=0.1
 
