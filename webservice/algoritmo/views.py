@@ -52,7 +52,7 @@ def data_regression_list(request):
         datos['rain'] = float(datos['rain'])
         print(datos)
         area_ha = neural_network(datos)
-        area_m2 = 10000 * area_ha
+        area_m2 = area_ha
         response = {
             'area': area_m2,
             'radio': pow(area_m2/math.pi, 1/2)
