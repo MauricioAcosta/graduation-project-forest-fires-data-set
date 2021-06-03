@@ -60,7 +60,7 @@ def neural_network(data):
         month_oct, month_sep, day_fri, day_mon, day_sat, day_sun,
         day_thu, day_tue, day_wed
     ]
-    # print('data', data)
+    print('data', data)
     X = pd.DataFrame([data], columns=columns)
     print('dataframe', X.transpose())
     mlp = load('./algoritmo/resources/MLPRegressorbest__1566899474132___0_010564.joblib')

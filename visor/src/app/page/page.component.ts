@@ -19,18 +19,6 @@ export class PageComponent implements OnInit {
   activateSend: boolean;
   affectedArea: estimateArea;
   constructor(private modalService: NgbModal, private service: ServiceService) {
-    this.form = {
-      month: 0,
-      day: 0,
-      FFMC: 18.7,
-      DMC: 1.1,
-      DC: 7.9,
-      ISI: 0,
-      temp: 2.2,
-      RH: 15.0,
-      wind: 0.4,
-      rain: 0,
-    };
     this.activateSend = false;
     this.coordinate = {
       lat: 0,
@@ -55,14 +43,36 @@ export class PageComponent implements OnInit {
     this.form = {
       month: this.getRndInteger(1, 12),
       day: this.getRndInteger(1, 7),
-      DMC: this.getRndInteger(1.1, 291.3),
-      DC: this.getRndInteger(7.9, 860.6),
+      DMC: this.getRndInteger(1.1, 290.2),
+      DC: this.getRndInteger(7.9, 852.7),
       ISI: this.getRndInteger(0, 56.1),
-      temp: this.getRndInteger(2.2, 33.3),
-      RH: this.getRndInteger(15.0, 100),
-      wind: this.getRndInteger(0.4, 9.4),
-      rain: this.getRndInteger(0, 6.4),
-      FFMC: this.getRndInteger(18.7, 96.2),
+      temp: this.getRndInteger(0, 40),
+      RH: this.getRndInteger(0, 100),
+      wind: this.getRndInteger(0, 10),
+      rain: this.getRndInteger(0, 10),
+      FFMC: this.getRndInteger(18.7, 77.5),
+      // Mayor incendio
+      // month: 8,
+      // day: 7,
+      // DMC: 290.2,
+      // DC: 852.7,
+      // ISI: 56.1,
+      // temp: 40,
+      // RH: 100,
+      // wind: 10,
+      // rain: 10,
+      // FFMC: 77.5,
+      // Menor incendio
+      // month: 11,
+      // day: 3,
+      // DMC: 1.1,
+      // DC: 7.9,
+      // ISI: 0,
+      // temp: 0,
+      // RH: 0,
+      // wind: 0,
+      // rain: 0,
+      // FFMC: 18.7,
     };
     this.modalRef = this.modalService.open(modal, {
       backdropClass: 'light-blue-backdrop',

@@ -31,6 +31,24 @@
       </h5>
       <div class="row">
         <div class="col-12 col-md-6 mb-1">
+          <app-input
+            [title]="'* Latitud'"
+            [id]="'latitud'"
+            [type]="'text'"
+            [(inputModel)]="coordinate.lat"
+            [disabled]="true"
+          ></app-input>
+        </div>
+        <div class="col-12 col-md-6 mb-1">
+          <app-input
+            [title]="'* longitud'"
+            [id]="'longitud'"
+            [type]="'text'"
+            [disabled]="true"
+            [(inputModel)]="coordinate.lng"
+          ></app-input>
+        </div>
+        <div class="col-12 col-md-6 mb-1">
           <div class="input-group">
             <div class="input-group-prepend">
               <label class="input-group-text" aria-required="true">* Mes</label>
@@ -87,7 +105,7 @@
             [id]="'dmc'"
             [type]="'number'"
             [min]="'1.1'"
-            [max]="'291.3'"
+            [max]="'290.2'"
             [(inputModel)]="form.DMC"
           ></app-input>
         </div>
@@ -97,7 +115,7 @@
             [id]="'dc'"
             [type]="'number'"
             [min]="'7.9'"
-            [max]="'860.6'"
+            [max]="'852.7'"
             [(inputModel)]="form.DC"
           ></app-input>
         </div>
@@ -106,7 +124,6 @@
             [title]="'* ISI (velocidad de propagación)'"
             [id]="'isi'"
             [type]="'number'"
-            [min]="'0'"
             [max]="'56.1'"
             [(inputModel)]="form.ISI"
           ></app-input>
@@ -116,8 +133,7 @@
             [title]="'* Temperatura °C'"
             [id]="'temp'"
             [type]="'number'"
-            [min]="'2.2'"
-            [max]="'33.30'"
+            [max]="'40'"
             [(inputModel)]="form.temp"
           ></app-input>
         </div>
@@ -126,7 +142,6 @@
             [title]="'* Humedad Relativa %'"
             [id]="'rh'"
             [type]="'number'"
-            [min]="'15.0'"
             [max]="'100'"
             [(inputModel)]="form.RH"
           ></app-input>
@@ -136,8 +151,7 @@
             [title]="'* Viento km/h'"
             [id]="'wind'"
             [type]="'number'"
-            [min]="'0.40'"
-            [max]="'9.40'"
+            [max]="'10'"
             [(inputModel)]="form.wind"
           ></app-input>
         </div>
@@ -146,8 +160,7 @@
             [title]="'* Lluvia mm/m2'"
             [id]="'rain'"
             [type]="'number'"
-            [min]="'0'"
-            [max]="'6.4'"
+            [max]="'10'"
             [(inputModel)]="form.rain"
           ></app-input>
         </div>
@@ -157,7 +170,7 @@
             [id]="'ffmc'"
             [type]="'number'"
             [min]="'18.7'"
-            [max]="'96.20'"
+            [max]="'77.5'"
             [(inputModel)]="form.FFMC"
           ></app-input>
         </div>

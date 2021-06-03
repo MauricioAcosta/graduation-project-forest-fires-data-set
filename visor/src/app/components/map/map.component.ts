@@ -10,6 +10,7 @@ import {
 import { estimateArea } from 'src/app/models/estimateArea.interface';
 import { coordinateInterface } from '../../models/coordinate.interface';
 import { ServiceService } from '../../services/service.service';
+import { ToastrService } from 'ngx-toastr';
 
 declare const L: any;
 
@@ -25,17 +26,23 @@ export class MapComponent implements OnInit, OnChanges {
   @Output() eventAction = new EventEmitter();
   coordinate: coordinateInterface;
   sizeFire: string;
-  constructor(private service: ServiceService) {}
+  constructor(private service: ServiceService, private toastr: ToastrService) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.affectedArea && changes.affectedArea.currentValue !== 0) {
-      const area = changes.affectedArea.currentValue.area / 10000;
-      const radius = changes.affectedArea.currentValue.radio / 1000;
+      const area = changes.affectedArea.currentValue.area;
+      const radius = changes.affectedArea.currentValue.radio;
+      if (area > 0) {
+        this.toastr.show('Área: ' + area + ' Radio: ' + radius, 'Regresión', {
+          disableTimeOut: true,
+        });
+      }
+      const radiusGif = radius / 1000;
       var iconUrl = '/assets/fire.gif';
       var icon = L.icon({
         iconUrl: iconUrl,
-        iconSize: [radius, radius],
-        iconAnchor: [radius / 2, radius / 2],
+        iconSize: [radiusGif, radiusGif],
+        iconAnchor: [radiusGif / 2, radiusGif / 2],
       });
       L.marker([this.coordinate.lat, this.coordinate.lng], {
         icon: icon,
