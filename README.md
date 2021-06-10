@@ -27,3 +27,4 @@ Run in bash
 ```bash
 ./red_reuronal.py
 ```
+Note: Inside the [visor](https://github.com/MauricioAcosta/graduation-project-forest-fires-data-set/tree/master/visor) folder is the frontend of the application and its README and in the [webservice](https://github.com/MauricioAcosta/graduation-project-forest-fires-data-set/tree/master/webservice) folder is the backend of the application which uses the neural network.
