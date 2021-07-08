@@ -35,7 +35,7 @@ Requirements
 - python 3.x
 - pip v3
 
-Inside the [folder](https://github.com/MauricioAcosta/graduation-project-forest-fires-data-set/tree/master/webservice) run the next command
+Inside the [folder webservice](https://github.com/MauricioAcosta/graduation-project-forest-fires-data-set/tree/master/webservice) run the next command
 
 Install dependences
 
@@ -49,7 +49,7 @@ Run server
 ```
 ## Run Frontend
 
-Inside the [folder](https://github.com/MauricioAcosta/graduation-project-forest-fires-data-set/tree/master/visor) run the next command
+Inside the [folder visor](https://github.com/MauricioAcosta/graduation-project-forest-fires-data-set/tree/master/visor) run the next command
 
 Requirements
 - node v10.x.x
