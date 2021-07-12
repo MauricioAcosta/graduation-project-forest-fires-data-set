@@ -47,6 +47,12 @@ Run server
 ```bash
 ./manage.py runserver
 ```
+or run docker compose into the folder webservice
+
+```bash
+docker-compose up --build
+```
+
 ## Run Frontend
 
 Inside the [folder visor](https://github.com/MauricioAcosta/graduation-project-forest-fires-data-set/tree/master/visor) run the next command
@@ -66,3 +72,10 @@ Run server
 npm start
 ```
 Navigate to `http://localhost:4200/`. in your browser of choice.
+
+or run docker compose into the folder visor
+
+```bash
+docker-compose up --build
+```
+Navigate to `http://localhost:8080/`. in your browser of choice.
