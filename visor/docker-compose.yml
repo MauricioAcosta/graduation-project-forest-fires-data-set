@@ -1,0 +1,9 @@
+version: '3.7'
+services:
+  visor:
+    container_name: visor
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '8080:80'
