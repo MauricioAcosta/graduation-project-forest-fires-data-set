@@ -8,12 +8,16 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class InputComponent implements OnInit {
   @Input() title: string;
   @Input() id: string;
-  @Input() type: string;
+  @Input() type: string = 'text';
+  @Input() name: string = 'name';
+  @Input() placeholder: string = '';
   @Input() min: string;
   @Input() max: string;
+  @Input() classStyle: string;
+  @Input() inputModel: any;
   @Input() disabled: boolean = false;
-  @Input() inputModel: number;
-  @Output() inputModelChange = new EventEmitter<number>();
+  @Input() icon: string;
+  @Output() inputModelChange = new EventEmitter<any>();
   constructor() {}
   ngOnInit(): void {}
 }
