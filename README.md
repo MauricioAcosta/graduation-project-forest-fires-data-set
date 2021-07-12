@@ -27,3 +27,55 @@ Run in bash
 ```bash
 ./red_reuronal.py
 ```
+Note: Inside the [visor](https://github.com/MauricioAcosta/graduation-project-forest-fires-data-set/tree/master/visor) folder is the frontend of the application and its README and in the [webservice](https://github.com/MauricioAcosta/graduation-project-forest-fires-data-set/tree/master/webservice) folder is the backend of the application which uses the neural network.
+
+## Run backend
+
+Requirements
+- python 3.x
+- pip v3
+
+Inside the [folder webservice](https://github.com/MauricioAcosta/graduation-project-forest-fires-data-set/tree/master/webservice) run the next command
+
+Install dependences
+
+```bash
+pip3 install -r requirements.txt
+```
+Run server
+
+```bash
+./manage.py runserver
+```
+or run docker compose into the folder webservice
+
+```bash
+docker-compose up --build
+```
+
+## Run Frontend
+
+Inside the [folder visor](https://github.com/MauricioAcosta/graduation-project-forest-fires-data-set/tree/master/visor) run the next command
+
+Requirements
+- node v10.x.x
+- npm v6.x.x
+
+Install dependences
+
+```bash
+npm install
+```
+Run server
+
+```bash
+npm start
+```
+Navigate to `http://localhost:4200/`. in your browser of choice.
+
+or run docker compose into the folder visor
+
+```bash
+docker-compose up --build
+```
+Navigate to `http://localhost:8080/`. in your browser of choice.
